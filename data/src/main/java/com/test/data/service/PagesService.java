@@ -22,7 +22,7 @@ public class PagesService<T> {
     private Session session;
 
 
-    public Page<T> findAll(Class<T> clazz, Pageable pageable, Filters filters){
+    public Page<T> findAll(Class<T> clazz, Pageable pageable, Filters filters) {
         Collection data = this.session.loadAll(clazz, filters, convert(pageable.getSort()), new Pagination(pageable.getPageNumber(), pageable.getPageSize()), 1);
         return updatePage(pageable, new ArrayList(data));
     }
@@ -30,18 +30,18 @@ public class PagesService<T> {
     private Page<T> updatePage(Pageable pageable, List<T> results) {
         int pageSize = pageable.getPageSize();
         int pageOffset = pageable.getOffset();
-        int total = pageOffset + results.size() + (results.size() == pageSize?pageSize:0);
-        return new PageImpl(results, pageable, (long)total);
+        int total = pageOffset + results.size() + (results.size() == pageSize ? pageSize : 0);
+        return new PageImpl(results, pageable, (long) total);
     }
 
     private SortOrder convert(Sort sort) {
         SortOrder sortOrder = new SortOrder();
-        if(sort != null) {
+        if (sort != null) {
             Iterator var3 = sort.iterator();
 
-            while(var3.hasNext()) {
-                Sort.Order order = (Sort.Order)var3.next();
-                if(order.isAscending()) {
+            while (var3.hasNext()) {
+                Sort.Order order = (Sort.Order) var3.next();
+                if (order.isAscending()) {
                     sortOrder.add(new String[]{order.getProperty()});
                 } else {
                     sortOrder.add(SortOrder.Direction.DESC, new String[]{order.getProperty()});

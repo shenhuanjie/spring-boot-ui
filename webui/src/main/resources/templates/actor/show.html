@@ -3,10 +3,13 @@
     <table class="addNewInfList">
         <tr>
             <th>姓名</th>
-            <td width="240"><input class="inp-list w-200 clear-mr f-left" type="text" th:value="${actor.name}"  maxlength="16" /></td>
+            <td width="240"><input class="inp-list w-200 clear-mr f-left" type="text" th:value="${actor.name}"
+                                   maxlength="16"/></td>
             <th>生日</th>
             <td>
-                <input  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" class="inp-list w-200 clear-mr f-left" th:value="${actor.born} ? ${#dates.format(actor.born,'yyyy-MM-dd HH:mm:ss')} :''" />
+                <input onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text"
+                       class="inp-list w-200 clear-mr f-left"
+                       th:value="${actor.born} ? ${#dates.format(actor.born,'yyyy-MM-dd HH:mm:ss')} :''"/>
             </td>
         </tr>
         <tr>

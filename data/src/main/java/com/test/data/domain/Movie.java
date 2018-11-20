@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@JsonIdentityInfo(generator=JSOGGenerator.class)
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 @NodeEntity
 public class Movie {
     @GraphId
@@ -23,16 +23,17 @@ public class Movie {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
-    @Relationship(type="扮演", direction = Relationship.INCOMING)
+    @Relationship(type = "扮演", direction = Relationship.INCOMING)
     List<Role> roles = new ArrayList<>();
 
-    public Role addRole(Actor actor, String name){
-        Role role = new Role(actor,this,name);
+    public Role addRole(Actor actor, String name) {
+        Role role = new Role(actor, this, name);
         this.roles.add(role);
         return role;
     }
 
-    public Movie() { }
+    public Movie() {
+    }
 
     public Long getId() {
         return id;

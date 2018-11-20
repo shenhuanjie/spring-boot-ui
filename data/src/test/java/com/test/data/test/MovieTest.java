@@ -30,7 +30,7 @@ public class MovieTest {
     ActorRepository actorRepository;
 
     @Before
-    public void initData(){
+    public void initData() {
         movieRepository.deleteAll();
         actorRepository.deleteAll();
 
@@ -52,10 +52,10 @@ public class MovieTest {
         yhl.setName("闫怀礼");
 
 
-        matrix1.addRole(swk,  "孙悟空");
-        matrix1.addRole(zbj,  "猪八戒");
-        matrix1.addRole(ccr,  "唐僧");
-        matrix1.addRole(yhl,  "沙僧");
+        matrix1.addRole(swk, "孙悟空");
+        matrix1.addRole(zbj, "猪八戒");
+        matrix1.addRole(ccr, "唐僧");
+        matrix1.addRole(yhl, "沙僧");
 
         movieRepository.save(matrix1);
         Assert.notNull(matrix1.getId());
@@ -63,11 +63,11 @@ public class MovieTest {
     }
 
     @Test
-    public void get(){
+    public void get() {
         Movie movie = movieRepository.findByName("西游记");
         Assert.notNull(movie);
-        logger.info("===movie=== movie:{}, {}",movie.getName(), movie.getCreateDate());
-        for(Role role : movie.getRoles()){
+        logger.info("===movie=== movie:{}, {}", movie.getName(), movie.getCreateDate());
+        for (Role role : movie.getRoles()) {
             logger.info("====== actor:{}, role:{}", role.getActor().getName(), role.getName());
         }
     }

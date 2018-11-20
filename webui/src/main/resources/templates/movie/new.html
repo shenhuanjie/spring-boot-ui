@@ -1,4 +1,4 @@
-<link th:href="@{/styles/imageselect.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{/styles/imageselect.css}" rel="stylesheet" type="text/css"/>
 <script th:src="@{/scripts/imageselect.js}"></script>
 <script th:src="@{/scripts/movie/new.js}"></script>
 
@@ -6,7 +6,7 @@
     <table class="addNewInfList">
         <tr>
             <th>名称</th>
-            <td><input class="inp-list w-200 clear-mr f-left" type="text"   id="name" name="name"  maxlength="120" /></td>
+            <td><input class="inp-list w-200 clear-mr f-left" type="text" id="name" name="name" maxlength="120"/></td>
             <th>剧照</th>
             <td width="240">
                 <select name="photo" id="photo">
@@ -20,7 +20,8 @@
         <tr>
             <th>日期</th>
             <td>
-                <input  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" class="inp-list w-200 clear-mr f-left" id="createDate" name="createDate"/>
+                <input onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text"
+                       class="inp-list w-200 clear-mr f-left" id="createDate" name="createDate"/>
             </td>
         </tr>
     </table>
@@ -30,8 +31,8 @@
     </div>
 </form>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('select[name=photo]').ImageSelect({dropdownWidth:425});
+    $(document).ready(function () {
+        $('select[name=photo]').ImageSelect({dropdownWidth: 425});
     });
 </script>
 

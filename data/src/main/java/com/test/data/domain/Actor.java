@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-@JsonIdentityInfo(generator=JSOGGenerator.class)
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 @NodeEntity
 public class Actor {
     @GraphId
@@ -21,7 +21,8 @@ public class Actor {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date born;
 
-    public Actor() { }
+    public Actor() {
+    }
 
     public Long getId() {
         return id;

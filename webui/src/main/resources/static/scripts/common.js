@@ -6,12 +6,14 @@ function getScrollTop() {
     }
     return scrollTop;
 }
+
 function showWindowPop(state) {
     if (state === undefined) {
         state = true;
     }
     if (state) {
-        var contentHeight = $(window).height() , top = getScrollTop() + (contentHeight - $('#windowTipBox').height()) / 2;
+        var contentHeight = $(window).height(),
+            top = getScrollTop() + (contentHeight - $('#windowTipBox').height()) / 2;
         $('#windowShadow').height($(document).height()).show();
         $('#windowTipBox').css('top', (top < 0 ? 36 : top) + 'px').show();
     } else {
@@ -19,6 +21,7 @@ function showWindowPop(state) {
         $('#windowShadow').hide();
     }
 }
+
 $(function () {
     $('.columnLeftMenu h6').live('click', function () {
         var $this = $(this);
@@ -30,14 +33,14 @@ $(function () {
         }
     });
     $('.selectMode').live("change", (function () {
-        var $this = $(this) , val = $(this).find('option:selected').text();
+        var $this = $(this), val = $(this).find('option:selected').text();
         $this.siblings('input').val(val);
     }));
 });
 
-function isEmpty(obj){
-	if (obj == undefined||obj ==null||obj =='') {
+function isEmpty(obj) {
+    if (obj == undefined || obj == null || obj == '') {
         return true;
     }
-	return false;
+    return false;
 }
