@@ -35,11 +35,23 @@ public class MovieController {
     @Autowired
     private PagesService<Movie> pagesService;
 
+    /**
+     * INDEX
+     *
+     * @return
+     */
     @RequestMapping("/index")
     public ModelAndView index() {
         return new ModelAndView("movie/index");
     }
 
+    /**
+     * 查看电影控制器
+     *
+     * @param model
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}")
     public ModelAndView show(ModelMap model, @PathVariable Long id) {
         Movie movie = movieRepository.findOne(id);
@@ -47,6 +59,12 @@ public class MovieController {
         return new ModelAndView("movie/show");
     }
 
+    /**
+     * 新建电影控制器
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping("/new")
     public ModelAndView create(ModelMap model) {
         String[] files = {"/images/movie/西游记.jpg", "/images/movie/西游记续集.jpg"};
@@ -54,13 +72,26 @@ public class MovieController {
         return new ModelAndView("movie/new");
     }
 
+    /**
+     * 保存电影控制器
+     *
+     * @param movie
+     * @return
+     */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Movie movie) throws Exception {
+    public String save(Movie movie) {
         movieRepository.save(movie);
         logger.info("新增->ID={}", movie.getId());
         return "1";
     }
 
+    /**
+     * 修改电影控制器
+     *
+     * @param model
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/edit/{id}")
     public ModelAndView update(ModelMap model, @PathVariable Long id) {
         Movie movie = movieRepository.findOne(id);
@@ -76,8 +107,15 @@ public class MovieController {
         return new ModelAndView("movie/edit");
     }
 
+    /**
+     * 更新电影控制器
+     *
+     * @param movie
+     * @param request
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/update")
-    public String update(Movie movie, HttpServletRequest request) throws Exception {
+    public String update(Movie movie, HttpServletRequest request) {
         String rolename = request.getParameter("rolename");
         String actorid = request.getParameter("actorid");
 
@@ -95,16 +133,28 @@ public class MovieController {
         return "1";
     }
 
+    /**
+     * 删除电影控制器
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable Long id) throws Exception {
+    public String delete(@PathVariable Long id) {
         Movie movie = movieRepository.findOne(id);
         movieRepository.delete(movie);
         logger.info("删除->ID=" + id);
         return "1";
     }
 
+    /**
+     * 电影分页查询控制器
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/list")
-    public Page<Movie> list(HttpServletRequest request) throws Exception {
+    public Page<Movie> list(HttpServletRequest request) {
         String name = request.getParameter("name");
         String page = request.getParameter("page");
         String size = request.getParameter("size");

@@ -15,5 +15,3 @@ public interface MovieRepository extends GraphRepository<Movie> {
     @Query("MATCH (m:Movie) WHERE m.name =~ ('(?i).*'+{name}+'.*') RETURN m")
     Page<Movie> findByName(@Param("name") String name, Pageable pageable);//not support yet
 }
-
-
